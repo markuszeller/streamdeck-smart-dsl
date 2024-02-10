@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>com.markuszeller.smartdsl Property Inspector</title>
+    <link rel="stylesheet" href="../../../libs/css/sdpi.css"/>
+</head>
+
+<body>
+<div class="sdpi-wrapper">
+    <form id="property-inspector">
+        <div class="sdpi-item">
+            <div id="xxx" data-localize class="sdpi-item-label" title="Router IP">Router IP</div>
+            <input class="sdpi-item-value" name="routerIp" type="text" value="192.168.2.1" placeholder="192.168.2.1"
+                   required pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"/>
+        </div>
+        <div type="radio" class="sdpi-item">
+            <div class="sdpi-item-label" data-localize title="Units">Units</div>
+            <div class="sdpi-item-value ">
+            <span class="sdpi-item-child">
+                <input id="unit_radio1" type="radio" value="1000" name="units">
+                <label for="unit_radio1" class="sdpi-item-label"><span></span>Mbit/s</label>
+            </span>
+            <span class="sdpi-item-child">
+                <input id="unit_radio2" type="radio" value="8000" name="units" checked>
+                <label for="unit_radio2" class="sdpi-item-label"><span></span>MB/s</label>
+            </span>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Stream Deck Libs -->
+<script src="../../../libs/js/constants.js"></script>
+<script src="../../../libs/js/prototypes.js"></script>
+<script src="../../../libs/js/timers.js"></script>
+<script src="../../../libs/js/utils.js"></script>
+<script src="../../../libs/js/events.js"></script>
+<script src="../../../libs/js/api.js"></script>
+<script src="../../../libs/js/property-inspector.js"></script>
+<script src="../../../libs/js/dynamic-styles.js"></script>
+
+<!-- Property Inspector Source -->
+<script src="inspector.js"></script>
+</body>
+
+</html>

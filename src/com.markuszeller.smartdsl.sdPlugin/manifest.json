@@ -1,0 +1,51 @@
+{
+	"SDKVersion": 2,
+	"Author": "Markus Zeller",
+	"CodePath": "app.html",
+	"Description": "DSL Speed for Smart Router",
+	"Name": "Smart DSL",
+	"Icon": "actions/dsl-speed/assets/telekom",
+	"URL": "https://www.elgato.com/en/gaming/stream-deck",
+	"Version": "0.0.0",
+	"Software": {
+		"MinimumVersion": "5.0"
+	},
+	"OS": [
+		{
+			"Platform": "mac",
+			"MinimumVersion": "10.11"
+		},
+		{
+			"Platform": "windows",
+			"MinimumVersion": "10"
+		}
+	],
+	"Category": "Network",
+	"CategoryIcon": "actions/dsl-speed/assets/telekom",
+	"Actions": [
+		{
+			"Icon": "actions/dsl-speed/assets/telekom",
+			"Name": "DSL Speed",
+			"Controllers": ["Keypad", "Encoder"],
+			"Encoder": {
+				"layout": "$A1",
+				"StackColor": "#0000FF",
+				"TriggerDescription": {
+					"Rotate": "",
+					"Push": "",
+					"Touch": "",
+					"LongTouch": ""
+				}
+			},
+			"States": [
+				{
+					"Image": "actions/dsl-speed/assets/telekom"
+				}
+			],
+			"Tooltip": "Show DSL Speed",
+			"UUID": "com.markuszeller.smartdsl.action",
+			"PropertyInspectorPath": "actions/dsl-speed/property-inspector/inspector.html",
+			"SupportedInMultiActions": false
+		}
+	]
+}

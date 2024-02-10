@@ -1,0 +1,13 @@
+{
+  "Description": "DSL Speed",
+  "Name": "DSL Speed",
+  "Category": "Network",
+  "com.markuszeller.smartdsl.action": {
+    "Name": "DSL Speed",
+    "Tooltip": "Speed of DSL connection"
+  },
+  "Localization": {
+    "Router IP": "Router IP",
+    "Units": "Units"
+  }
+}
