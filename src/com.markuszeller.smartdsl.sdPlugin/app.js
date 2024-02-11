@@ -83,8 +83,14 @@
         }
     };
 
+    const parsePayloadToSettings = (payload) => {
+        routerIp   = payload.settings.routerIp;
+        units      = parseInt(payload.settings.units);
+        needRedraw = true;
+    };
+
     myAction.onWillAppear(({action, context, device, event, payload}) => {
-        routerIp      = payload.settings.routerIp;
+        parsePayloadToSettings(payload);
         actionContext = context;
         initCanvas();
         interval = setInterval(update, refreshInterval);
@@ -98,14 +104,12 @@
     });
 
     myAction.onDidReceiveSettings(({context, payload}) => {
-        routerIp   = payload.settings.routerIp;
-        units      = parseInt(payload.settings.units);
-        needRedraw = true;
+        parsePayloadToSettings(payload);
         drawCanvas();
     });
 
     myAction.onKeyUp(({action, context, device, event, payload}) => {
-        units = 1000 === units ? 8000 : 1000;
+        units                  = 1000 === units ? 8000 : 1000;
         payload.settings.units = units;
         $SD.setGlobalSettings(payload);
         needRedraw = true;
