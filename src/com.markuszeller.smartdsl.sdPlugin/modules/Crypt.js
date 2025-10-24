@@ -13,6 +13,9 @@ export class Crypt {
         ];
         this.history  = '';
         this.values   = {};
+        this.key     = "xxxx";
+        this.history = '';
+        this.values  = {};
     }
 
     decrypt(text) {
