@@ -1,12 +1,15 @@
 export class App {
     constructor(refreshIntervalMs, crypt, canvas, action, settings) {
-        this.refreshInMs = refreshIntervalMs;
+        this.KEY_LENGTH = 64;
+
         this.crypt       = crypt;
         this.canvas      = canvas;
+        this.refreshInMs = refreshIntervalMs;
         this.action      = action;
         this.settings    = settings;
         this.interval    = null;
-        this.values = {};
+        this.values      = {};
+        this.isUpdating  = false;
 
         this.addHandlers();
     }
@@ -16,27 +19,38 @@ export class App {
     }
 
     update() {
-        if (!this.settings.routerIp) {
+        if (!this.settings.routerIp || this.KEY_LENGTH !== this.settings.key.length || true === this.isUpdating) {
             return;
         }
+
+        this.isUpdating = true;
 
         fetch(this.getApiUrl())
             .then(response => response.text())
             .then(text => {
                 this.values = this.crypt.decrypt(text);
-                this.canvas.draw(this.values, this.settings.actionContext, this.settings.units);
+                if (false === !!this.values) {
+                    throw Error("Decryption failed.");
+                }
+                this.canvas.draw(this.values, this.settings.units);
             })
             .catch(error => {
+                this.canvas.drawStatus(["Error", error.message]);
                 console.error('error', error);
             });
+
+        this.isUpdating = false;
     }
 
     addHandlers() {
         this.action.onWillAppear(({action, context, device, event, payload}) => {
+            this.canvas.setActionContext(context);
+
             this.settings.parsePayload(payload);
             this.crypt.setKey(this.settings.key);
 
             this.update();
+            this.interval = setInterval(this.update, this.refreshInMs);
         });
 
         this.action.onWillDisappear(({action, context, device, event, payload}) => {
@@ -44,20 +58,25 @@ export class App {
         });
 
         this.action.onDidReceiveSettings(({context, payload}) => {
+            this.canvas.setActionContext(context);
+
             this.settings.parsePayload(payload);
             this.crypt.setKey(this.settings.key);
 
             this.update();
             this.values.needRedraw = true;
-            this.canvas.draw(this.values, this.settings.actionContext, this.settings.units);
+            this.canvas.draw(this.values, this.settings.units);
         });
 
         this.action.onKeyUp(({action, context, device, event, payload}) => {
+            this.canvas.setActionContext(context);
+
             this.settings.toggleUnits();
+            this.values.needRedraw = true;
+            this.canvas.draw(this.values, this.settings.units);
+
             payload.settings.units = this.settings.units;
             $SD.setGlobalSettings(payload);
-            this.values.needRedraw = true;
-            this.canvas.draw(this.values, this.settings.actionContext, this.settings.units);
         });
     }
 }
