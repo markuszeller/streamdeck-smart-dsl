@@ -22,4 +22,4 @@ $PI.onSendToPropertyInspector(action, (payload) => {
    document.getElementById('unit_radio1').style.border = '1px solid white';
 });
 
-document.getElementById('xxx').style.border = '1px solid white';
+document.getElementById('router-ip').style.border = '1px solid white';
