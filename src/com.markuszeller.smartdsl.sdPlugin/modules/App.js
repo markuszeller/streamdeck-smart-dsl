@@ -34,9 +34,8 @@ export class App {
     addHandlers() {
         this.action.onWillAppear(({action, context, device, event, payload}) => {
             this.settings.parsePayload(payload);
-            this.settings.actionContext = context;
-            this.canvas.add();
-            this.interval = setInterval(this.update, this.refreshInMs);
+            this.crypt.setKey(this.settings.key);
+
             this.update();
         });
 
@@ -46,6 +45,9 @@ export class App {
 
         this.action.onDidReceiveSettings(({context, payload}) => {
             this.settings.parsePayload(payload);
+            this.crypt.setKey(this.settings.key);
+
+            this.update();
             this.values.needRedraw = true;
             this.canvas.draw(this.values, this.settings.actionContext, this.settings.units);
         });

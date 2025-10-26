@@ -20,6 +20,11 @@
             <input class="sdpi-item-value" name="routerIp" type="text" value="192.168.2.1" placeholder="192.168.2.1"
                    required pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"/>
         </div>
+        <div class="sdpi-item">
+            <div data-localize class="sdpi-item-label" title="Key">Key</div>
+            <input id="key" class="sdpi-item-value" name="key" type="text" value="" placeholder="Hex key"
+                   required pattern="[a-z0-9]{64}"/>
+        </div>
         <div type="radio" class="sdpi-item">
             <div class="sdpi-item-label" data-localize title="Units">Units</div>
             <div class="sdpi-item-value ">

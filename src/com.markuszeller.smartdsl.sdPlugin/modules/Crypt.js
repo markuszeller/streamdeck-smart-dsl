@@ -1,25 +1,16 @@
 export class Crypt {
     constructor() {
-        this.iv       = 'xxxx=';
-        this.keyArray = [
-            -1,
-            1,
-            1,
-            -1,
-            -1,
-            -1,
-            1,
-            -1
-        ];
-        this.history  = '';
-        this.values   = {};
-        this.key     = "xxxx";
+        this.key     = "";
         this.history = '';
         this.values  = {};
     }
 
     decrypt(text) {
         this.values.needRedraw = false;
+
+        if ("" === this.key) {
+            throw Error('Empty key.');
+        }
 
         if (this.history !== text) {
             this.values.needRedraw = true;
@@ -45,5 +36,9 @@ export class Crypt {
         }
 
         return this.values;
+    }
+
+    setKey(key) {
+        this.key = key;
     }
 }
