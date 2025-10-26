@@ -40,4 +40,30 @@ export class Canvas {
         this.ctx.fillText(`${1000 === units ? 'Mbit' : 'MB'}/s`, 72, 136);
         $SD.setImage(actionContext, this.canvas.toDataURL());
     }
+
+    drawStatus(status) {
+        if (!this.ctx || null === this.actionContext) {
+            return;
+        }
+
+        this.clearScreen();
+        this.ctx.fillStyle = 'white';
+
+        let y = 50;
+        status.forEach(line => {
+            this.ctx.fillText(line, this.START_X, y);
+            y += 20;
+        });
+
+        $SD.setImage(this.actionContext, this.canvas.toDataURL());
+    }
+
+    clearScreen() {
+        this.ctx.fillStyle = 'black';
+        this.ctx.fillRect(0, 0, this.SCREEN_WIDTH, this.SCREEN_HEIGHT);
+    }
+
+    setActionContext(actionContext) {
+        this.actionContext = actionContext;
+    }
 }
