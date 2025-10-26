@@ -1,5 +1,5 @@
 $PI.onConnected((jsn) => {
-    const form = document.querySelector('#property-inspector');
+    const form = document.getElementById('property-inspector');
     const {actionInfo, appInfo, connection, messageType, port, uuid} = jsn;
     const {payload, context} = actionInfo;
     const {settings} = payload;
@@ -16,10 +16,3 @@ $PI.onConnected((jsn) => {
 
     console.log("Property Inspector connected");
 });
-
-$PI.onSendToPropertyInspector(action, (payload) => {
-   console.log(payload);
-   document.getElementById('unit_radio1').style.border = '1px solid white';
-});
-
-document.getElementById('router-ip').style.border = '1px solid white';
