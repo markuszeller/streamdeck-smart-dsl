@@ -13,6 +13,9 @@ export class Canvas {
         this.canvas.width  = this.SCREEN_WIDTH;
         this.canvas.height = this.SCREEN_HEIGHT;
         this.ctx           = this.canvas.getContext('2d');
+
+        this.ctx.font      = '20px Arial';
+        this.ctx.textAlign = 'center';
     }
 
     add() {
