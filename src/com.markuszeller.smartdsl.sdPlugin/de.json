@@ -8,6 +8,7 @@
   },
   "Localization": {
     "Router IP": "Router IP",
-    "Units": "Einheiten"
+    "Units": "Einheiten",
+    "Key": "Schlüssel"
   }
 }
