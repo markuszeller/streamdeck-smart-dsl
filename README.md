@@ -11,7 +11,7 @@ This plugin is used to display the current speed of the Smart Router DSL.
 ```cmd
 mklink /D C:\Users\%USERNAME%\AppData\Roaming\Elgato\StreamDeck\Plugins\com.markuszeller.smartdsl.sdPlugin C:\Users\%USERNAME%\Documents\PhpstormProjects\streamdeck-smart-dsl\src\com.markuszeller.smartdsl.sdPlugin
 ```
-- Clone the libs 
+- Clone the libs.
 ```cmd
 git clone https://github.com/elgatosf/streamdeck-javascript-sdk src/com.markuszeller.smartdsl.sdPlugin/libs
 ```
@@ -19,8 +19,8 @@ git clone https://github.com/elgatosf/streamdeck-javascript-sdk src/com.markusze
 
 # Configuration of the plugin
 
-- Enter Router IP
-- Enter Key (see below how to obtain)
+- Enter Router IP.
+- Enter Key (see below how to obtain).
 - Select your prefered metrics (Mbit/s or MB/s). It can be switched by tapping the button.
 
 # Obtain (encryption) key
@@ -40,4 +40,4 @@ Telekom encrypts the JSON with data about the connections. This project includes
 
 # Credits
 - This is a private project and not affiliated with Deutsche Telekom AG.
-- Telekom Logo @ https://commons.wikimedia.org/wiki/File:Deutsche_Telekom_2022.svg
+- Telekom Logo @ https://commons.wikimedia.org/wiki/File:Deutsche_Telekom_2022.svg.
