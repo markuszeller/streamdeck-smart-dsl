@@ -27,12 +27,15 @@ export class Canvas {
             return;
         }
 
-        this.ctx.fillStyle = 'black';
-        this.ctx.fillRect(0, 0, 144, 144);
-        this.ctx.font      = '20px Arial';
-        this.ctx.textAlign = 'center';
-        this.ctx.fillStyle = 'online' === values.dsl_link_status ? '#0f0' : '#f00';
-        this.ctx.fillText(`${values.dsl_link_status}`, 72, 50);
+        if (false === Object.hasOwn(values, "dsl_link_status")) {
+            this.drawStatus(["No data"]);
+
+            return;
+        }
+
+        this.clearScreen();
+        this.ctx.fillStyle = 'online' === values.dsl_link_status ? this.COLOR_OK : this.COLOR_ERROR;
+        this.ctx.fillText(`${values.dsl_link_status}`, this.START_X, 50);
         this.ctx.fillStyle = 'white';
         this.ctx.fillText(`${(values.inet_download / units).toFixed(2)} / ${(values.dsl_downstream / units).toFixed(2)}`, 72, 80);
         this.ctx.fillText(`${(values.inet_upload / units).toFixed(2)} / ${(values.dsl_upstream / units).toFixed(2)}`, 72, 110);
