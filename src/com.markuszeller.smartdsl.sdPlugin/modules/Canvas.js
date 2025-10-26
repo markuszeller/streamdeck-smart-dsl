@@ -2,11 +2,13 @@ export class Canvas {
     constructor() {
         this.SCREEN_WIDTH  = 144;
         this.SCREEN_HEIGHT = 144;
-        this.COLOR_OK      = '#0f0';
-        this.COLOR_ERROR   = '#f00';
-        this.COLOR_BLUE    = '#0af';
-        this.COLOR_WHITE   = '#fff';
-        this.COLOR_BLACK   = '#000';
+        this.COLOR         = {
+            ok   : "#0f0",
+            error: "#f00",
+            blue : "#0af",
+            white: "#fff",
+            black: "#000"
+        };
         this.PRECEISION    = 2;
         this.START_X       = 72;
         this.START_Y       = 50;
@@ -34,12 +36,12 @@ export class Canvas {
         }
 
         this.clearScreen();
-        this.ctx.fillStyle = 'online' === values.dsl_link_status ? this.COLOR_OK : this.COLOR_ERROR;
+        this.ctx.fillStyle = 'online' === values.dsl_link_status ? this.COLOR.ok : this.COLOR.error;
         this.ctx.fillText(`${values.dsl_link_status}`, this.START_X, this.START_Y);
-        this.ctx.fillStyle = this.COLOR_WHITE;
+        this.ctx.fillStyle = this.COLOR.white;
         this.ctx.fillText(`${(values.inet_download / units).toFixed(this.PRECEISION)} / ${(values.dsl_downstream / units).toFixed(this.PRECEISION)}`, this.START_X, 80);
         this.ctx.fillText(`${(values.inet_upload / units).toFixed(this.PRECEISION)} / ${(values.dsl_upstream / units).toFixed(this.PRECEISION)}`, this.START_X, 110);
-        this.ctx.fillStyle = this.COLOR_BLUE;
+        this.ctx.fillStyle = this.COLOR.blue;
         this.ctx.fillText(`${1000 === units ? 'Mbit' : 'MB'}/s`, this.START_X, 136);
 
         $SD.setImage(this.actionContext, this.canvas.toDataURL());
@@ -51,7 +53,7 @@ export class Canvas {
         }
 
         this.clearScreen();
-        this.ctx.fillStyle = this.COLOR_WHITE;
+        this.ctx.fillStyle = this.COLOR.white;
 
         let y = this.START_Y;
         status.forEach(line => {
@@ -63,7 +65,7 @@ export class Canvas {
     }
 
     clearScreen() {
-        this.ctx.fillStyle = this.COLOR_BLACK;
+        this.ctx.fillStyle = this.COLOR.black;
         this.ctx.fillRect(0, 0, this.SCREEN_WIDTH, this.SCREEN_HEIGHT);
     }
 
