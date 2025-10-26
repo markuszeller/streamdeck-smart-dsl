@@ -4,9 +4,13 @@ export class Canvas {
         this.SCREEN_HEIGHT = 144;
         this.COLOR_OK      = '#0f0';
         this.COLOR_ERROR   = '#f00';
-        this.COLOR_BLUE    = '##0af';
-        this.PRECEISION = 2;
-        this.START_X = 72;
+        this.COLOR_BLUE    = '#0af';
+        this.COLOR_WHITE   = '#fff';
+        this.COLOR_BLACK   = '#000';
+        this.PRECEISION    = 2;
+        this.START_X       = 72;
+        this.START_Y       = 50;
+        this.LINEHEIGHT    = 20;
 
         this.actionContext = null;
         this.canvas        = document.createElement('canvas');
@@ -31,8 +35,8 @@ export class Canvas {
 
         this.clearScreen();
         this.ctx.fillStyle = 'online' === values.dsl_link_status ? this.COLOR_OK : this.COLOR_ERROR;
-        this.ctx.fillText(`${values.dsl_link_status}`, this.START_X, 50);
-        this.ctx.fillStyle = 'white';
+        this.ctx.fillText(`${values.dsl_link_status}`, this.START_X, this.START_Y);
+        this.ctx.fillStyle = this.COLOR_WHITE;
         this.ctx.fillText(`${(values.inet_download / units).toFixed(this.PRECEISION)} / ${(values.dsl_downstream / units).toFixed(this.PRECEISION)}`, this.START_X, 80);
         this.ctx.fillText(`${(values.inet_upload / units).toFixed(this.PRECEISION)} / ${(values.dsl_upstream / units).toFixed(this.PRECEISION)}`, this.START_X, 110);
         this.ctx.fillStyle = this.COLOR_BLUE;
@@ -47,19 +51,19 @@ export class Canvas {
         }
 
         this.clearScreen();
-        this.ctx.fillStyle = 'white';
+        this.ctx.fillStyle = this.COLOR_WHITE;
 
-        let y = 50;
+        let y = this.START_Y;
         status.forEach(line => {
             this.ctx.fillText(line, this.START_X, y);
-            y += 20;
+            y += this.LINEHEIGHT;
         });
 
         $SD.setImage(this.actionContext, this.canvas.toDataURL());
     }
 
     clearScreen() {
-        this.ctx.fillStyle = 'black';
+        this.ctx.fillStyle = this.COLOR_BLACK;
         this.ctx.fillRect(0, 0, this.SCREEN_WIDTH, this.SCREEN_HEIGHT);
     }
 
