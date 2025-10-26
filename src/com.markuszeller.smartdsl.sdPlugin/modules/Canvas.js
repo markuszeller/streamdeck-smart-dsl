@@ -18,12 +18,8 @@ export class Canvas {
         this.ctx.textAlign = 'center';
     }
 
-    add() {
-        document.body.appendChild(this.canvas);
-    }
-
-    draw(values, actionContext, units) {
-        if (!this.ctx || false === values.needRedraw) {
+    draw(values, units) {
+        if (!this.ctx || false === values.needRedraw || null === this.actionContext) {
             return;
         }
 
@@ -37,11 +33,12 @@ export class Canvas {
         this.ctx.fillStyle = 'online' === values.dsl_link_status ? this.COLOR_OK : this.COLOR_ERROR;
         this.ctx.fillText(`${values.dsl_link_status}`, this.START_X, 50);
         this.ctx.fillStyle = 'white';
-        this.ctx.fillText(`${(values.inet_download / units).toFixed(2)} / ${(values.dsl_downstream / units).toFixed(2)}`, 72, 80);
-        this.ctx.fillText(`${(values.inet_upload / units).toFixed(2)} / ${(values.dsl_upstream / units).toFixed(2)}`, 72, 110);
-        this.ctx.fillStyle = '#0af';
-        this.ctx.fillText(`${1000 === units ? 'Mbit' : 'MB'}/s`, 72, 136);
-        $SD.setImage(actionContext, this.canvas.toDataURL());
+        this.ctx.fillText(`${(values.inet_download / units).toFixed(this.PRECEISION)} / ${(values.dsl_downstream / units).toFixed(this.PRECEISION)}`, this.START_X, 80);
+        this.ctx.fillText(`${(values.inet_upload / units).toFixed(this.PRECEISION)} / ${(values.dsl_upstream / units).toFixed(this.PRECEISION)}`, this.START_X, 110);
+        this.ctx.fillStyle = this.COLOR_BLUE;
+        this.ctx.fillText(`${1000 === units ? 'Mbit' : 'MB'}/s`, this.START_X, 136);
+
+        $SD.setImage(this.actionContext, this.canvas.toDataURL());
     }
 
     drawStatus(status) {
