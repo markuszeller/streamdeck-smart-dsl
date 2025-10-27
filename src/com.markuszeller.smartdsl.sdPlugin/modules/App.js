@@ -47,6 +47,7 @@ export class App {
             });
 
         this.isUpdating = false;
+        this.addInterval();
     }
 
     addHandlers() {
@@ -70,6 +71,10 @@ export class App {
             this.settings.parsePayload(payload);
             this.crypt.setKey(this.settings.key);
 
+            if (payload.settings.refresh !== this.settings.refresh) {
+                this.addInterval();
+            }
+
             this.update();
             this.values.needRedraw = true;
             this.canvas.draw(this.values, this.settings.units);
@@ -85,5 +90,16 @@ export class App {
             payload.settings.units = this.settings.units;
             $SD.setGlobalSettings(payload);
         });
+    }
+
+    addInterval() {
+        this.removeInterval();
+        this.interval = setInterval(() => { this.update(); }, this.settings.refresh * 1000);
+    }
+
+    removeInterval() {
+        if(null !== this.interval) {
+            clearInterval(this.interval);
+        }
     }
 }
