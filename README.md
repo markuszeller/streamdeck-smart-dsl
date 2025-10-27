@@ -11,7 +11,7 @@ This plugin is used to display the current speed of the Smart Router DSL.
 ```cmd
 mklink /D C:\Users\%USERNAME%\AppData\Roaming\Elgato\StreamDeck\Plugins\com.markuszeller.smartdsl.sdPlugin C:\Users\%USERNAME%\Documents\PhpstormProjects\streamdeck-smart-dsl\src\com.markuszeller.smartdsl.sdPlugin
 ```
-- Clone the libs.
+- Clone the libs. (You can skip this step, because the files are included already)
 ```cmd
 git clone https://github.com/elgatosf/streamdeck-javascript-sdk src/com.markuszeller.smartdsl.sdPlugin/libs
 ```
