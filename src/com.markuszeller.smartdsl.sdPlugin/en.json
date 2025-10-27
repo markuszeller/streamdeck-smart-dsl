@@ -9,6 +9,7 @@
   "Localization": {
     "Router IP": "Router IP",
     "Units": "Units",
-    "Key": "Key"
+    "Key": "Key",
+    "Refresh": "Refresh (s)"
   }
 }
