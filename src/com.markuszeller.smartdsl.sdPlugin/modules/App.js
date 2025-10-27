@@ -51,7 +51,7 @@ export class App {
     }
 
     addHandlers() {
-        this.action.onWillAppear(({action, context, device, event, payload}) => {
+        this.action.onWillAppear(({context, payload}) => {
             this.canvas.setActionContext(context);
             this.canvas.drawStatus(["Initializing"]);
 
@@ -61,8 +61,8 @@ export class App {
             this.update();
         });
 
-        this.action.onWillDisappear(({action, context, device, event, payload}) => {
-            this.interval && clearInterval(this.interval);
+        this.action.onWillDisappear(() => {
+            this.removeInterval();
         });
 
         this.action.onDidReceiveSettings(({context, payload}) => {
@@ -80,7 +80,7 @@ export class App {
             this.canvas.draw(this.values, this.settings.units);
         });
 
-        this.action.onKeyUp(({action, context, device, event, payload}) => {
+        this.action.onKeyUp(({context, payload}) => {
             this.canvas.setActionContext(context);
 
             this.settings.toggleUnits();
