@@ -21,7 +21,7 @@ git clone https://github.com/elgatosf/streamdeck-javascript-sdk src/com.markusze
 
 - Enter Router IP.
 - Enter Key (see below how to obtain).
-- Select your prefered metrics (Mbit/s or MB/s). It can be switched by tapping the button.
+- Select your preferred metrics (Mbit/s or MB/s). It can be switched by tapping the button.
 
 # Obtain (encryption) key
 
