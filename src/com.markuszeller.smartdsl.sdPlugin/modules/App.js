@@ -53,12 +53,12 @@ export class App {
     addHandlers() {
         this.action.onWillAppear(({action, context, device, event, payload}) => {
             this.canvas.setActionContext(context);
+            this.canvas.drawStatus(["Initializing"]);
 
             this.settings.parsePayload(payload);
             this.crypt.setKey(this.settings.key);
 
             this.update();
-            this.interval = setInterval(this.update, this.refreshInMs);
         });
 
         this.action.onWillDisappear(({action, context, device, event, payload}) => {
