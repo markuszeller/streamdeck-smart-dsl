@@ -21,6 +21,6 @@ export class Settings {
     }
 
     toggleUnits() {
-        this.units = 1000 === this.units ? 8000 : 1000;
+        this.units = this.DEFAULT.units === this.units ? 8000 : this.DEFAULT.units;
     }
 }
