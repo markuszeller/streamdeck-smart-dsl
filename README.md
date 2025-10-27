@@ -5,7 +5,7 @@ Streamdeck plugin for Smart Router DSL speed
 This plugin is used to display the current speed of the Smart Router DSL.
 
 # Setup Development Environment
-- Refer to [Getting Started](https://docs.elgato.com/sdk/plugins/getting-started).
+- Refer to [Getting Started](https://docs.elgato.com/sdk/plugins/getting-started). (Link is dead or has been changed?)
 - Create a symlink to the plugin folder in the Streamdeck plugin folder.
 - Run from windows CMD.
 ```cmd
