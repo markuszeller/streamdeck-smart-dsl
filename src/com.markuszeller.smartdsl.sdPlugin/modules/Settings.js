@@ -1,9 +1,15 @@
 export class Settings {
     constructor() {
-        this.routerIp      = '';
-        this.units         = 1000;
-        this.key           = '';
+        this.DEFAULT = {
+            "refresh": 30,
+            "units"  : 1000
+        }
+
+        this.routerIp = '';
+        this.units    = this.DEFAULT.units;
+        this.key      = '';
         this.refresh  = this.DEFAULT.refresh;
+
     }
 
     parsePayload(payload) {

@@ -1,10 +1,9 @@
 export class App {
-    constructor(refreshIntervalMs, crypt, canvas, action, settings) {
+    constructor(crypt, canvas, action, settings) {
         this.KEY_LENGTH = 64;
 
         this.crypt       = crypt;
         this.canvas      = canvas;
-        this.refreshInMs = refreshIntervalMs;
         this.action      = action;
         this.settings    = settings;
         this.interval    = null;
