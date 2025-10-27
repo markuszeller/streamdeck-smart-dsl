@@ -18,8 +18,16 @@ export class App {
     }
 
     update() {
-        if (!this.settings.routerIp || this.KEY_LENGTH !== this.settings.key.length || true === this.isUpdating) {
+        if (true === this.isUpdating) {
             return;
+        }
+
+        if (!this.settings.routerIp) {
+            throw Error("Router IP");
+        }
+
+        if (this.KEY_LENGTH !== this.settings.key.length) {
+            throw Error("Key length");
         }
 
         this.isUpdating = true;
