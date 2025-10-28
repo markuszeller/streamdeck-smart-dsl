@@ -22,6 +22,7 @@ git clone https://github.com/elgatosf/streamdeck-javascript-sdk src/com.markusze
 - Enter Router IP.
 - Enter Key (see below how to obtain).
 - Select your preferred metrics (Mbit/s or MB/s). It can be switched by tapping the button.
+- Set your preferred refresh interval in seconds. I am using 30 seconds and defaulted it.
 
 # Obtain (encryption) key
 
