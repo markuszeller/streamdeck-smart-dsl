@@ -39,6 +39,21 @@ Telekom encrypts the JSON with data about the connections. This project includes
 - Copy the value in the quotes.
 - Paste into plugin settings.
 
+# Building
+
+For convenience I added a simple PHP script which first increases the minor version in `manifest.json` and creates
+a zip file with the required `streamDeckPlugin` extension. After it was created you can double click it in your
+file browser.
+
+## Prerequisites
+
+You need to have PHP installed. This was created for PHP 8.4.
+To be able to run directly without saying `php -f build.php` just make it executable with `chmod a+x build.php`.
+
+Run it as
+```bash
+./build.php
+```
 # Credits
 - This is a private project and not affiliated with Deutsche Telekom AG.
 - Telekom Logo @ https://commons.wikimedia.org/wiki/File:Deutsche_Telekom_2022.svg.
