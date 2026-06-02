@@ -6,7 +6,7 @@
     "Name": "Smart DSL",
     "Icon": "actions\/dsl-speed\/assets\/telekom",
     "URL": "https:\/\/www.elgato.com\/en\/gaming\/stream-deck",
-    "Version": "0.3.0",
+    "Version": "0.3.1",
     "Software": {
         "MinimumVersion": "5.0"
     },

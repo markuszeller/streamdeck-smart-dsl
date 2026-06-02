@@ -14,10 +14,10 @@ export class Settings {
 
     parsePayload(payload) {
         this.routerIp = payload.settings.routerIp;
-        this.units    = parseInt(payload.settings.units);
+        this.units    = Number.parseInt(payload.settings.units);
         this.key      = payload.settings.key;
 
-        this.refresh = parseInt(payload.settings.refresh) || this.DEFAULT.refresh;
+        this.refresh = Number.parseInt(payload.settings.refresh) || this.DEFAULT.refresh;
     }
 
     toggleUnits() {
