@@ -1,20 +1,21 @@
 export class Canvas {
-    constructor() {
-        this.SCREEN_WIDTH  = 144;
-        this.SCREEN_HEIGHT = 144;
-        this.COLOR         = {
-            ok   : "#0f0",
-            error: "#f00",
-            blue : "#0af",
-            white: "#fff",
-            black: "#000"
-        };
-        this.PRECEISION    = 2;
-        this.START_X       = 72;
-        this.START_Y       = 50;
-        this.LINEHEIGHT    = 20;
+    SCREEN_WIDTH  = 144;
+    SCREEN_HEIGHT = 144;
+    COLOR         = {
+        ok   : "#0f0",
+        error: "#f00",
+        blue : "#0af",
+        white: "#fff",
+        black: "#000"
+    };
+    PRECEISION    = 2;
+    START_X       = 72;
+    START_Y       = 50;
+    LINEHEIGHT    = 20;
 
-        this.actionContext = null;
+    actionContext = null;
+
+    constructor() {
         this.canvas        = document.createElement('canvas');
         this.canvas.width  = this.SCREEN_WIDTH;
         this.canvas.height = this.SCREEN_HEIGHT;
