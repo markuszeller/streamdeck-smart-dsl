@@ -1,4 +1,7 @@
 export class App {
+
+    KEY_LENGTH = 64;
+
     constructor(crypt, canvas, action, settings) {
         this.crypt      = crypt;
         this.canvas     = canvas;
@@ -21,11 +24,11 @@ export class App {
         }
 
         if (!this.settings.routerIp) {
-            throw Error("Router IP");
+            throw new Error("Router IP");
         }
 
         if (this.KEY_LENGTH !== this.settings.key.length) {
-            throw Error("Key length");
+            throw new Error("Key length");
         }
 
         this.isUpdating = true;
@@ -35,7 +38,7 @@ export class App {
             .then(text => {
                 this.values = this.crypt.decrypt(text);
                 if (false === !!this.values) {
-                    throw Error("Decryption failed.");
+                    throw new Error("Decryption failed.");
                 }
                 this.canvas.draw(this.values, this.settings.units);
             })
@@ -102,6 +105,4 @@ export class App {
             clearInterval(this.interval);
         }
     }
-
-    KEY_LENGTH = 64;
 }
