@@ -1,14 +1,12 @@
 export class App {
     constructor(crypt, canvas, action, settings) {
-        this.KEY_LENGTH = 64;
-
-        this.crypt       = crypt;
-        this.canvas      = canvas;
-        this.action      = action;
-        this.settings    = settings;
-        this.interval    = null;
-        this.values      = {};
-        this.isUpdating  = false;
+        this.crypt      = crypt;
+        this.canvas     = canvas;
+        this.action     = action;
+        this.settings   = settings;
+        this.interval   = null;
+        this.values     = {};
+        this.isUpdating = false;
 
         this.addHandlers();
     }
@@ -94,12 +92,16 @@ export class App {
 
     addInterval() {
         this.removeInterval();
-        this.interval = setInterval(() => { this.update(); }, this.settings.refresh * 1000);
+        this.interval = setInterval(() => {
+            this.update();
+        }, this.settings.refresh * 1000);
     }
 
     removeInterval() {
-        if(null !== this.interval) {
+        if (null !== this.interval) {
             clearInterval(this.interval);
         }
     }
+
+    KEY_LENGTH = 64;
 }
