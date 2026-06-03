@@ -37,8 +37,16 @@ export class Canvas {
         }
 
         this.clearScreen();
-        this.ctx.fillStyle = 'online' === values.dsl_link_status ? this.COLOR.ok : this.COLOR.error;
-        this.ctx.fillText(`${values.dsl_link_status}`, this.START_X, this.START_Y);
+        const originalStatus = values.dsl_link_status;
+        let displayStatus = originalStatus;
+        this.ctx.fillStyle = 'online' === originalStatus ? this.COLOR.ok : this.COLOR.error;
+
+        if (0 === values.inet_download && 0 === values.inet_upload) {
+            this.ctx.fillStyle = this.COLOR.blue;
+            displayStatus = 'connecting';
+        }
+
+        this.ctx.fillText(`${displayStatus}`, this.START_X, this.START_Y);
         this.ctx.fillStyle = this.COLOR.white;
         this.ctx.fillText(`${(values.inet_download / units).toFixed(this.PRECEISION)} / ${(values.dsl_downstream / units).toFixed(this.PRECEISION)}`, this.START_X, 80);
         this.ctx.fillText(`${(values.inet_upload / units).toFixed(this.PRECEISION)} / ${(values.dsl_upstream / units).toFixed(this.PRECEISION)}`, this.START_X, 110);
