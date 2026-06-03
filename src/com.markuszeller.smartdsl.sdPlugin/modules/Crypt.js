@@ -30,8 +30,7 @@ export class Crypt {
                 }
             });
 
-        } catch (exception) {
-        }
+        } catch {}
 
         return this.values;
     }
