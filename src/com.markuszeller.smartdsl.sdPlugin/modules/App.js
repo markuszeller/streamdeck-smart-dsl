@@ -18,7 +18,7 @@ export class App {
         return `http://${this.settings.routerIp}/data/Status.json?_=${performance.now()}`;
     }
 
-    update() {
+    async update() {
         if (true === this.isUpdating) {
             return;
         }
@@ -33,7 +33,7 @@ export class App {
 
         this.isUpdating = true;
 
-        fetch(this.getApiUrl())
+        await fetch(this.getApiUrl())
             .then(response => response.text())
             .then(text => {
                 this.values = this.crypt.decrypt(text);
@@ -52,21 +52,21 @@ export class App {
     }
 
     addHandlers() {
-        this.action.onWillAppear(({context, payload}) => {
+        this.action.onWillAppear(async ({context, payload}) => {
             this.canvas.setActionContext(context);
             this.canvas.drawStatus(["Initializing"]);
 
             this.settings.parsePayload(payload);
             this.crypt.setKey(this.settings.key);
 
-            this.update();
+            await this.update();
         });
 
         this.action.onWillDisappear(() => {
             this.removeInterval();
         });
 
-        this.action.onDidReceiveSettings(({context, payload}) => {
+        this.action.onDidReceiveSettings(async ({context, payload}) => {
             this.canvas.setActionContext(context);
 
             this.settings.parsePayload(payload);
@@ -76,7 +76,7 @@ export class App {
                 this.addInterval();
             }
 
-            this.update();
+            await this.update();
             this.values.needRedraw = true;
             this.canvas.draw(this.values, this.settings.units);
         });
@@ -95,8 +95,8 @@ export class App {
 
     addInterval() {
         this.removeInterval();
-        this.interval = setInterval(() => {
-            this.update();
+        this.interval = setInterval(async () => {
+            await this.update();
         }, this.settings.refresh * 1000);
     }
 
