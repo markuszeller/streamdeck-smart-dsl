@@ -1,16 +1,13 @@
 export class Settings {
-    constructor() {
-        this.DEFAULT = {
-            "refresh": 30,
-            "units"  : 1000
-        }
-
-        this.routerIp = '';
-        this.units    = this.DEFAULT.units;
-        this.key      = '';
-        this.refresh  = this.DEFAULT.refresh;
-
+    DEFAULT = {
+        "refresh": 30,
+        "units": 1000
     }
+
+    routerIp = '';
+    units    = this.DEFAULT.units;
+    key      = '';
+    refresh  = this.DEFAULT.refresh;
 
     parsePayload(payload) {
         this.routerIp = payload.settings.routerIp;
