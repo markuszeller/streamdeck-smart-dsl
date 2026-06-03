@@ -1,9 +1,7 @@
 export class Crypt {
-    constructor() {
-        this.key     = "";
-        this.history = '';
-        this.values  = {};
-    }
+    key = "";
+    history = "";
+    values  = {};
 
     decrypt(text) {
         this.values.needRedraw = false;
