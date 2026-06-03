@@ -1,5 +1,5 @@
 export class Crypt {
-    key = "";
+    key     = "";
     history = "";
     values  = {};
 
@@ -30,7 +30,8 @@ export class Crypt {
                 }
             });
 
-        } catch {}
+        } catch {
+        }
 
         return this.values;
     }
