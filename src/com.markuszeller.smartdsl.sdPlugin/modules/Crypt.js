@@ -7,7 +7,7 @@ export class Crypt {
         this.values.needRedraw = false;
 
         if ("" === this.key) {
-            throw Error('Empty key.');
+            throw new Error('Empty key.');
         }
 
         if (this.history !== text) {
