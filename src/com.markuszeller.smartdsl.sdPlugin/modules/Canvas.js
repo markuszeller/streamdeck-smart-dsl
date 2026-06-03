@@ -41,7 +41,7 @@ export class Canvas {
         let displayStatus = originalStatus;
         this.ctx.fillStyle = 'online' === originalStatus ? this.COLOR.ok : this.COLOR.error;
 
-        if (0 === values.inet_download && 0 === values.inet_upload) {
+        if (0 === Number.parseInt(values.inet_download) && 0 === Number.parseInt(values.inet_upload)) {
             this.ctx.fillStyle = this.COLOR.blue;
             displayStatus = 'connecting';
         }
